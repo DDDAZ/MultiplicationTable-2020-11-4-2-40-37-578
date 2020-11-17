@@ -5,8 +5,14 @@ export class MultiplicationTable {
   }
 }
 
-function getSingleMultiplication(a: number, b: number): string {
-  return `${a}*${b}=${a * b}`
+function getSingleMultiplication(a: number, b: number, count: number): string {
+  const ss = `${a}*${b}=${a * b}`
+  const space = count - ss.length
+  let spaceLine = ''
+  for (let i = 0; i < space + 2; i++) {
+    spaceLine += ' '
+  }
+  return ss + spaceLine
 }
 
 function writeMultiplicationTable(start: number, end: number): string {
@@ -14,12 +20,14 @@ function writeMultiplicationTable(start: number, end: number): string {
   let line = []
 
   for (let i = start; i <= end; i++) {
+
     for (let j = start; j <= i; j++) {
-      const single = getSingleMultiplication(j, i)
+      const count = `${j}*${end}=${j * end}`.toString().length
+      const single = getSingleMultiplication(j, i, count)
       line.push(single)
     }
 
-    lines.push(end === 10 && i !== 10 ? line.join('   ') : line.join('  '))
+    lines.push(line.join('').trim())
     line = []
   }
 
