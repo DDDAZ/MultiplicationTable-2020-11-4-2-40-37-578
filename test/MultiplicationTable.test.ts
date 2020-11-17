@@ -1,4 +1,4 @@
-import {MultiplicationTable} from '../src/MultiplicationTable'
+import { MultiplicationTable } from '../src/MultiplicationTable'
 
 describe('Multiplication Table', () => {
   it('should render multiplication table of (1, 1)', () => {
@@ -12,5 +12,18 @@ describe('Multiplication Table', () => {
 
     //then
     expect(rendered).toBe('1*1=1')
+  })
+
+  it('should return nothing of (4, 1)', () => {
+    // given
+    const table = new MultiplicationTable()
+    const start = 4
+    const end = 1
+
+    //when
+    const rendered = table.render(start, end)
+
+    //then
+    expect(rendered).toBe('')
   })
 })
