@@ -6,13 +6,13 @@ export class MultiplicationTable {
 }
 
 function getSingleMultiplication(a: number, b: number, count: number): string {
-  const ss = `${a}*${b}=${a * b}`
-  const space = count - ss.length
+  const single = `${a}*${b}=${a * b}`
+  const gap = count - single.length
   let spaceLine = ''
-  for (let i = 0; i < space + 2; i++) {
+  for (let i = 0; i < gap + 2; i++) {
     spaceLine += ' '
   }
-  return ss + spaceLine
+  return single + spaceLine
 }
 
 function writeMultiplicationTable(start: number, end: number): string {
@@ -20,10 +20,9 @@ function writeMultiplicationTable(start: number, end: number): string {
   let line = []
 
   for (let i = start; i <= end; i++) {
-
-    for (let j = start; j <= i; j++) {
-      const count = `${j}*${end}=${j * end}`.toString().length
-      const single = getSingleMultiplication(j, i, count)
+    for (let k = start; k <= i; k++) {
+      const count = `${k}*${end}=${k * end}`.toString().length
+      const single = getSingleMultiplication(k, i, count)
       line.push(single)
     }
 
