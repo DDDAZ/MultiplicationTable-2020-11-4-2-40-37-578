@@ -41,4 +41,19 @@ describe('Multiplication Table', () => {
     //then
     expect(rendered).toBe('out of range')
   })
+
+  it('should return correct table of (8, 10)', () => {
+    // given
+    const table = new MultiplicationTable()
+    const start = 8
+    const end = 10
+
+    //when
+    const rendered = table.render(start, end)
+
+    //then
+    expect(rendered).toBe(`8*8=64
+8*9=72   9*9=81
+8*10=80  9*10=90  10*10=100`)
+  })
 })
