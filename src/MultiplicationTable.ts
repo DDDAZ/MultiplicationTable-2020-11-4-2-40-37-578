@@ -1,7 +1,7 @@
 export class MultiplicationTable {
   public render(start: number, end: number): string {
-    checkInput(start, end)
-    return writeMultiplicationTable(start, end)
+    const checkResult = checkInput(start, end)
+    return checkResult === 'valid' ? writeMultiplicationTable(start, end) : checkResult
   }
 }
 
@@ -26,10 +26,17 @@ function writeMultiplicationTable(start: number, end: number): string {
   return lines.join('\n')
 }
 
-function checkInput(start: number, end: number): boolean {
-  return isStartSmallerThanEnd(start, end) !== ''
+function checkInput(start: number, end: number): string {
+  if (isStartSmallerThanEnd(start, end)) {
+    return isInRange10(start, end) ? 'valid' : 'out of range'
+  }
+  return ''
 }
 
-function isStartSmallerThanEnd(start: number, end: number): string {
-  return start > end ? '' : 'valid'
+function isStartSmallerThanEnd(start: number, end: number): boolean {
+  return start <= end
+}
+
+function isInRange10(start: number, end: number): boolean {
+  return (start > 0 && start < 10) && (end > 0 && end < 10)
 }
