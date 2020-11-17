@@ -41,5 +41,5 @@ function isStartSmallerThanEnd(start: number, end: number): boolean {
 }
 
 function isInRange10(start: number, end: number): boolean {
-  return (start > 0 && start <= 10) && (end > 0 && end <= 10)
+  return !(start < 1 || start > 10 || end < 1 || end > 10)
 }
