@@ -7,12 +7,8 @@ export class MultiplicationTable {
 
 function getSingleMultiplication(a: number, b: number, count: number): string {
   const single = `${a}*${b}=${a * b}`
-  const gap = count - single.length
-  let spaceLine = ''
-  for (let i = 0; i < gap + 2; i++) {
-    spaceLine += ' '
-  }
-  return single + spaceLine
+  const gap = ' '.repeat(count - single.length + 2)
+  return single + gap
 }
 
 function writeMultiplicationTable(start: number, end: number): string {
